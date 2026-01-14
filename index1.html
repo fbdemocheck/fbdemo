@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fitness Booster | Premium Supplement Store</title>
+
+    <style>
+        :root {
+            --red: #c4161c;
+            --black: #0b0b0b;
+            --white: #ffffff;
+            --gray: #f5f5f5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #ffffff, #f2f2f2);
+            color: var(--black);
+        }
+
+        /* ================= HEADER ================= */
+        header {
+            background: linear-gradient(to right, var(--black), var(--red));
+            color: var(--white);
+            padding: 15px 40px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo img {
+            height: 48px;
+        }
+
+        .logo h1 {
+            font-size: 22px;
+            letter-spacing: 1px;
+        }
+
+        /* ================= NAVBAR ================= */
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px;
+        }
+
+        nav ul li a:hover {
+            color: #ffdede;
+        }
+
+        /* DROPDOWN */
+        .dropdown {
+            display: none;
+            position: absolute;
+            background: var(--white);
+            top: 35px;
+            left: 0;
+            min-width: 220px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            border-radius: 6px;
+        }
+
+        .dropdown a {
+            display: block;
+            color: var(--black);
+            padding: 10px 15px;
+            font-size: 14px;
+        }
+
+        .dropdown a:hover {
+            background-color: var(--red);
+            color: var(--white);
+        }
+
+        nav ul li:hover .dropdown {
+            display: block;
+        }
+
+        .search-bar input {
+            padding: 8px 12px;
+            border-radius: 20px;
+            border: none;
+            outline: none;
+            width: 200px;
+        }
+
+        /* ================= HERO ================= */
+        .hero {
+            background: linear-gradient(to right, var(--black), var(--red));
+            color: var(--white);
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 42px;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        /* ================= PRODUCTS ================= */
+        .products {
+            padding: 60px 40px;
+        }
+
+        .products h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 32px;
+            color: var(--red);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .product-img {
+            height: 220px;
+            background: linear-gradient(to bottom, #eaeaea, #ffffff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-info h3 {
+            margin-bottom: 8px;
+        }
+
+        .product-info p {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 12px;
+        }
+
+        .product-info button {
+            padding: 10px 18px;
+            border: none;
+            border-radius: 20px;
+            background: linear-gradient(to right, var(--black), var(--red));
+            color: var(--white);
+            cursor: pointer;
+        }
+
+        /* ================= FOOTER ================= */
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 40px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .footer-container h4 {
+            color: var(--red);
+            margin-bottom: 10px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 13px;
+            border-top: 1px solid #333;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <div class="logo">
+            <img src="fb logo.jpeg" alt="Fitness Booster Logo">
+            <h1>Fitness Booster</h1>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="index1.html">Home</a></li>
+                <li>
+                    <a href="#">Category ▾</a>
+                    <div class="dropdown">
+                        <a href="index.html">Whey Protein</a>
+                        <a href="#">Mass Gainers</a>
+                        <a href="#">Isolate Protein</a>
+                        <a href="#">Pre-Workouts</a>
+                        <a href="#">BCAA</a>
+                        <a href="#">EAA</a>
+                        <a href="#">Fat Burners</a>
+                        <a href="#">Tablets</a>
+                        <a href="#">Oats & Peanut Butter</a>
+                        <a href="#">Other Supplements</a>
+                    </div>
+                </li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="search-bar">
+            <input type="text" placeholder="Search products...">
+        </div>
+    </div>
+</header>
+
+<section class="hero">
+    <h2>European Standard Fitness Nutrition</h2>
+    <p>Power • Strength • Performance</p>
+</section>
+
+<section class="products">
+    <h2>Featured Products</h2>
+    <div class="product-grid">
+        <div class="product-card">
+            <div class="product-img">Whey Protein</div>
+            <div class="product-info">
+                <h3>Premium Whey</h3>
+                <p>High protein for muscle recovery</p>
+                <button>View Product</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-img">Mass Gainer</div>
+            <div class="product-info">
+                <h3>Mass Gainer Pro</h3>
+                <p>Maximum calories for size</p>
+                <button>View Product</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-img">Pre-Workout</div>
+            <div class="product-info">
+                <h3>Extreme Pre-Workout</h3>
+                <p>Energy, focus and pump</p>
+                <button>View Product</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-img">Fat Burner</div>
+            <div class="product-info">
+                <h3>Thermo Burner</h3>
+                <p>Advanced fat metabolism</p>
+                <button>View Product</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-container">
+        <div>
+            <h4>Fitness Booster</h4>
+            <p>Premium European-style fitness nutrition store.</p>
+        </div>
+        <div>
+            <h4>Quick Links</h4>
+            <p>Home</p>
+            <p>Category</p>
+            <p>Contact</p>
+        </div>
+        <div>
+            <h4>Contact</h4>
+            <p>Email: support@fitnessbooster.com</p>
+            <p>Phone: +91 XXXXX XXXXX</p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 Fitness Booster. All Rights Reserved.
+    </div>
+</footer>
+
+</body>
+</html>

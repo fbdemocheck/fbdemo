@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fitness Booster</title>
+
+<style>
+:root{
+ --red:#c4161c;--dark:#111;--light:#f4f4f4;--green:#1db954
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,Arial}
+body{background:var(--light)}
+
+/* HEADER */
+header{
+ position:sticky;top:0;z-index:1000;
+ background:linear-gradient(to right,#000,var(--red));
+ padding:12px 20px;color:#fff
+}
+.header{
+ display:flex;align-items:center;justify-content:space-between;
+ gap:15px;flex-wrap:wrap
+}
+.logo{display:flex;align-items:center;gap:10px}
+.logo img{height:42px}
+
+/* NAV */
+nav ul{list-style:none;display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+nav a{color:#fff;text-decoration:none;font-weight:500}
+nav li{position:relative}
+
+/* DROPDOWN */
+.dropdown{
+ display:none;position:absolute;top:30px;left:0;
+ background:#fff;border-radius:8px;
+ box-shadow:0 10px 25px rgba(0,0,0,.25);
+ min-width:200px
+}
+.dropdown a{display:block;padding:10px 14px;color:#111}
+.dropdown a:hover{background:var(--red);color:#fff}
+nav li:hover .dropdown{display:block}
+
+/* SEARCH */
+.search input{
+ padding:8px 14px;border-radius:20px;border:none;
+ width:220px
+}
+
+/* HERO */
+.hero{
+ background:linear-gradient(to right,#000,var(--red));
+ color:#fff;text-align:center;padding:60px 20px
+}
+
+/* SECTION */
+.section{padding:40px 20px}
+.section h2{text-align:center;color:var(--red);margin-bottom:25px}
+
+/* GRID */
+.grid{
+ display:grid;
+ grid-template-columns:repeat(5,1fr);
+ gap:20px
+}
+@media(max-width:1024px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){
+ .grid{grid-template-columns:repeat(2,1fr)}
+ .search input{width:160px}
+}
+
+/* CARD */
+.card{
+ background:#fff;border-radius:14px;
+ box-shadow:0 8px 25px rgba(0,0,0,.15);
+ overflow:hidden;position:relative;
+ transition:.3s
+}
+.card:hover{transform:translateY(-5px)}
+.badge{
+ position:absolute;top:10px;left:10px;
+ background:var(--red);color:#fff;
+ font-size:12px;padding:4px 8px;border-radius:4px
+}
+.card img{width:100%;height:200px;object-fit:contain}
+.info{padding:15px}
+.price del{font-size:13px;color:#777}
+.price span{color:var(--red);font-weight:bold}
+.stock.in{color:var(--green)}
+.stock.out{color:#ff4444}
+.order{
+ display:inline-block;margin-top:10px;
+ background:var(--red);color:#fff;
+ padding:8px 16px;border-radius:20px;
+ text-decoration:none;font-size:13px
+}
+
+/* BRANCHES */
+.branches{
+ display:grid;grid-template-columns:repeat(2,1fr);
+ gap:20px;max-width:900px;margin:auto
+}
+.branch{
+ background:#fff;padding:20px;border-radius:12px;
+ box-shadow:0 8px 20px rgba(0,0,0,.15)
+}
+@media(max-width:600px){.branches{grid-template-columns:1fr}}
+
+/* ADMIN PANEL */
+#adminPanel{
+ display:none;position:fixed;
+ top:50%;left:50%;
+ transform:translate(-50%,-50%);
+ background:#fff;width:400px;
+ max-height:85vh;overflow-y:auto;
+ border-radius:14px;z-index:3000;
+ box-shadow:0 0 40px rgba(0,0,0,.6)
+}
+.adminHeader{
+ background:#111;color:#fff;
+ padding:12px;text-align:center;
+ position:sticky;top:0
+}
+.adminItem{
+ border:1px solid #ddd;
+ padding:10px;border-radius:8px;
+ margin:10px
+}
+.adminItem input{width:80px;padding:4px}
+.adminFooter{
+ position:sticky;bottom:0;
+ background:#fff;padding:10px;
+ display:flex;gap:10px
+}
+.adminFooter button{
+ flex:1;border:none;
+ background:var(--red);color:#fff;
+ padding:10px;border-radius:8px
+}
+
+/* WHATSAPP */
+.whatsapp{
+ position:fixed;bottom:25px;right:25px;
+ width:55px;height:55px;background:#25D366;
+ border-radius:50%;display:flex;
+ align-items:center;justify-content:center
+}
+.whatsapp img{width:30px}
+
+footer{
+ background:#000;color:#fff;
+ padding:25px;text-align:center
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="header">
+ <div class="logo">
+  <img src="fb logo.jpeg">
+  <h2>Fitness Booster</h2>
+ </div>
+
+ <nav>
+  <ul>
+   <li><a href="#">Home</a></li>
+   <li>
+    <a href="#">Category ▾</a>
+    <div class="dropdown">
+     <a href="#whey">Whey Protein</a>
+     <a href="#mass">Mass Gainers</a>
+     <a href="#pre">Pre Workouts</a>
+    </div>
+   </li>
+   <li><a href="#branches">Branches</a></li>
+   <li><a href="#contact">Contact</a></li>
+  </ul>
+ </nav>
+
+ <div class="search">
+  <input id="searchInput" placeholder="Search supplements">
+ </div>
+</div>
+</header>
+
+<section class="hero">
+<h1>Premium Supplement Store</h1>
+<p>Strength • Performance • Results</p>
+</section>
+
+<section class="section" id="whey">
+<h2>Whey Protein</h2>
+<div class="grid" id="wheyGrid"></div>
+</section>
+
+<section class="section" id="mass">
+<h2>Mass Gainers</h2>
+<div class="grid" id="massGrid"></div>
+</section>
+
+<section class="section" id="pre">
+<h2>Pre Workouts</h2>
+<div class="grid" id="preGrid"></div>
+</section>
+
+<section class="section" id="branches">
+<h2>Our Branches</h2>
+<div class="branches">
+ <div class="branch">
+  <h3>Fitness Booster – Branch 1</h3>
+  <p>📍 Main Road, City Center</p>
+  <p>📞 8985786651</p>
+  <p>🕒 6 AM – 10 PM</p>
+ </div>
+ <div class="branch">
+  <h3>Fitness Booster – Branch 2</h3>
+  <p>📍 Market Area, Downtown</p>
+  <p>📞 8985786651</p>
+  <p>🕒 6 AM – 10 PM</p>
+ </div>
+</div>
+</section>
+
+<footer id="contact">
+<p>📞 +91 8985786651 | 📧 fitnessbooster@gmail.com</p>
+<p>© 2026 Fitness Booster</p>
+</footer>
+
+<a class="whatsapp" href="https://wa.me/918985786651">
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+</a>
+
+<!-- ADMIN PANEL -->
+<div id="adminPanel">
+<div class="adminHeader">Admin Inventory Editor</div>
+<div id="adminList"></div>
+<div class="adminFooter">
+<button onclick="saveData()">Save</button>
+<button onclick="adminPanel.style.display='none'">Close</button>
+</div>
+</div>
+
+<script>
+const adminPanel=document.getElementById("adminPanel");
+const adminList=document.getElementById("adminList");
+const wheyGrid=document.getElementById("wheyGrid");
+const massGrid=document.getElementById("massGrid");
+const preGrid=document.getElementById("preGrid");
+const searchInput=document.getElementById("searchInput");
+
+const defaultProducts=[
+{id:1,name:"ON Gold Whey",cat:"whey",mrp:5299,price:4799,stock:12,offer:10,img:"https://m.media-amazon.com/images/I/71Z0Z+zZz0L._SX679_.jpg"},
+{id:2,name:"MB Whey",cat:"whey",mrp:3999,price:3999,stock:8,offer:0,img:"https://m.media-amazon.com/images/I/61Yp3+7v-OL._SX679_.jpg"},
+{id:3,name:"MB Mass Gainer",cat:"mass",mrp:3899,price:3899,stock:7,offer:0,img:"https://m.media-amazon.com/images/I/61Yp3+7v-OL._SX679_.jpg"},
+{id:4,name:"Serious Mass",cat:"mass",mrp:5999,price:5599,stock:5,offer:5,img:"https://m.media-amazon.com/images/I/71Z0Z+zZz0L._SX679_.jpg"},
+{id:5,name:"MyProtein Pre",cat:"pre",mrp:2499,price:2249,stock:0,offer:10,img:"https://m.media-amazon.com/images/I/61f6Y7d6+FL._SX679_.jpg"}
+];
+
+let products=JSON.parse(localStorage.getItem("products"))||defaultProducts;
+
+function updateProduct(id,key,val){
+ const p=products.find(x=>x.id===id);
+ p[key]=Number(val);
+}
+
+function render(){
+ wheyGrid.innerHTML="";massGrid.innerHTML="";preGrid.innerHTML="";adminList.innerHTML="";
+ const q=searchInput.value.toLowerCase();
+
+ products.forEach(p=>{
+  if(!p.name.toLowerCase().includes(q)) return;
+
+  const card=`
+  <div class="card">
+   ${p.offer?`<div class="badge">${p.offer}% OFF</div>`:""}
+   <img src="${p.img}">
+   <div class="info">
+    <h4>${p.name}</h4>
+    <div class="price">${p.offer?`<del>₹${p.mrp}</del>`:""} <span>₹${p.price}</span></div>
+    <div class="stock ${p.stock?"in":"out"}">Stock: ${p.stock}</div>
+    <a class="order" href="https://wa.me/918985786651?text=Hi I want ${p.name} ₹${p.price}">
+     ${p.stock?"Order":"Notify"} on WhatsApp</a>
+   </div>
+  </div>`;
+  if(p.cat==="whey") wheyGrid.innerHTML+=card;
+  if(p.cat==="mass") massGrid.innerHTML+=card;
+  if(p.cat==="pre") preGrid.innerHTML+=card;
+
+  adminList.innerHTML+=`
+  <div class="adminItem">
+   <b>${p.name}</b><br>
+   Price <input type="number" value="${p.price}" oninput="updateProduct(${p.id},'price',this.value)"><br>
+   Stock <input type="number" value="${p.stock}" oninput="updateProduct(${p.id},'stock',this.value)"><br>
+   Offer % <input type="number" value="${p.offer}" oninput="updateProduct(${p.id},'offer',this.value)">
+  </div>`;
+ });
+}
+
+function saveData(){
+ localStorage.setItem("products",JSON.stringify(products));
+ alert("Saved permanently ✅");
+ render();
+}
+
+render();
+searchInput.onkeyup=render;
+
+document.addEventListener("keydown",e=>{
+ if(e.ctrlKey&&e.shiftKey&&e.key==="A"){
+  if(prompt("Admin Password")==="admin123")
+   adminPanel.style.display="block";
+ }
+});
+</script>
+
+</body>
+</html>

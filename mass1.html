@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Whey Protein | Fitness Booster</title>
+
+<style>
+:root{--red:#c4161c;--black:#0b0b0b;--white:#fff;--green:#1db954}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,Arial}
+body{background:#f4f4f4}
+
+/* ================= HEADER ================= */
+header{
+ position:sticky;top:0;z-index:1000;
+ background:linear-gradient(to right,var(--black),var(--red));
+ padding:12px 24px;color:#fff
+}
+.header{
+ display:flex;align-items:center;justify-content:space-between;
+ gap:15px;flex-wrap:wrap
+}
+.logo{display:flex;align-items:center;gap:10px}
+.logo img{height:42px}
+
+/* ================= NAV ================= */
+nav ul{list-style:none;display:flex;gap:22px;align-items:center}
+nav li{position:relative}
+nav a{color:#fff;text-decoration:none;font-weight:500}
+nav a:hover{opacity:.85}
+
+/* DROPDOWN */
+.dropdown{
+ display:none;position:absolute;top:32px;left:0;
+ background:#fff;border-radius:8px;
+ box-shadow:0 10px 25px rgba(0,0,0,.25);
+ min-width:210px
+}
+.dropdown a{display:block;padding:10px 14px;color:#111}
+.dropdown a:hover{background:var(--red);color:#fff}
+nav li:hover .dropdown{display:block}
+
+/* SEARCH */
+.search input{
+ padding:8px 14px;border-radius:20px;border:none;width:220px
+}
+
+/* ================= PRODUCTS ================= */
+.section{padding:45px 20px}
+.section h2{text-align:center;color:var(--red);margin-bottom:30px}
+
+.grid{
+ max-width:1200px;margin:auto;
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+ gap:25px
+}
+
+.card{
+ background:#fff;border-radius:14px;
+ box-shadow:0 8px 25px rgba(0,0,0,.15);
+ overflow:hidden;position:relative
+}
+.badge{
+ position:absolute;top:10px;left:10px;
+ background:var(--red);color:#fff;
+ font-size:12px;padding:4px 8px;border-radius:4px
+}
+.card img{
+ width:100%;height:200px;object-fit:contain;background:#fff
+}
+.info{padding:15px}
+.info h4{margin-bottom:6px}
+.price del{color:#777;font-size:13px}
+.price span{color:var(--red);font-weight:bold;font-size:17px}
+.stock.in{color:var(--green);font-size:13px}
+.stock.out{color:#ff4444;font-size:13px}
+.order{
+ display:inline-block;margin-top:10px;
+ background:var(--red);color:#fff;
+ padding:8px 16px;border-radius:20px;
+ text-decoration:none;font-size:13px
+}
+
+/* ================= FOOTER ================= */
+footer{
+ background:#000;color:#fff;
+ padding:35px 20px;margin-top:40px
+}
+.footer{
+ max-width:1200px;margin:auto;
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+ gap:20px
+}
+.footer h4{color:var(--red);margin-bottom:8px}
+.footer-bottom{
+ text-align:center;margin-top:20px;
+ border-top:1px solid #333;padding-top:10px;font-size:13px
+}
+
+/* ================= ADMIN ================= */
+#adminPanel{
+ display:none;position:fixed;
+ top:50%;left:50%;
+ transform:translate(-50%,-50%);
+ background:#fff;width:420px;
+ max-height:85vh;overflow:auto;
+ border-radius:14px;z-index:3000
+}
+.adminHeader{
+ background:#111;color:#fff;
+ padding:12px;text-align:center
+}
+.adminItem{
+ border:1px solid #ddd;
+ padding:10px;border-radius:8px;
+ margin:10px
+}
+.adminItem input{
+ width:100%;padding:6px;margin:4px 0
+}
+.adminFooter{
+ display:flex;gap:10px;padding:10px
+}
+.adminFooter button{
+ flex:1;border:none;
+ background:var(--red);color:#fff;
+ padding:10px;border-radius:8px
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="header">
+ <div class="logo">
+  <img src="fb logo.jpeg">
+  <h2>Fitness Booster</h2>
+ </div>
+
+ <nav>
+  <ul>
+   <li><a href="index.html">Home</a></li>
+   <li>
+    <a href="#">Products ▾</a>
+    <div class="dropdown">
+     <a href="whey.html">Whey Protein</a>
+     <a href="mass.html">Mass Gainers</a>
+     <a href="pre.html">Pre Workouts</a>
+    </div>
+   </li>
+   <li><a href="#contact">Contact</a></li>
+  </ul>
+ </nav>
+
+ <div class="search">
+  <input id="searchInput" placeholder="Search whey products">
+ </div>
+</div>
+</header>
+
+<section class="section">
+<h2>Whey Protein</h2>
+<div class="grid" id="productGrid"></div>
+</section>
+
+<footer id="contact">
+<div class="footer">
+ <div>
+  <h4>Fitness Booster</h4>
+  <p>Premium European-style nutrition store.</p>
+ </div>
+ <div>
+  <h4>Branches</h4>
+  <p>📍 Hyderabad – Kukatpally</p>
+  <p>📍 Hyderabad – Dilsukhnagar</p>
+ </div>
+ <div>
+  <h4>Contact</h4>
+  <p>📞 8985786651</p>
+  <p>📧 fitnessbooster@gmail.com</p>
+ </div>
+</div>
+<div class="footer-bottom">© 2026 Fitness Booster</div>
+</footer>
+
+<!-- ADMIN PANEL -->
+<div id="adminPanel">
+<div class="adminHeader">Admin – All Products</div>
+<div id="adminList"></div>
+<div class="adminFooter">
+<button onclick="saveData()">Save</button>
+<button onclick="adminPanel.style.display='none'">Close</button>
+</div>
+</div>
+
+<script>
+const grid=document.getElementById("productGrid");
+const adminList=document.getElementById("adminList");
+const searchInput=document.getElementById("searchInput");
+const adminPanel=document.getElementById("adminPanel");
+
+const defaultProducts=[
+{id:1,cat:"whey",name:"ON Gold Whey",mrp:5299,price:4799,stock:12,offer:10,img:"https://m.media-amazon.com/images/I/71Z0Z+zZz0L._SX679_.jpg"},
+{id:2,cat:"whey",name:"MuscleBlaze Whey",mrp:3999,price:3699,stock:0,offer:8,img:"https://m.media-amazon.com/images/I/61Yp3+7v-OL._SX679_.jpg"},
+{id:3,cat:"mass",name:"Serious Mass",mrp:4999,price:4599,stock:6,offer:9,img:"https://m.media-amazon.com/images/I/61dX+uQFhFL._SX679_.jpg"},
+{id:4,cat:"pre",name:"C4 Pre Workout",mrp:3499,price:3199,stock:5,offer:7,img:"https://m.media-amazon.com/images/I/61M2n6hQJGL._SX679_.jpg"}
+];
+
+let products=JSON.parse(localStorage.getItem("productsDB"))||defaultProducts;
+
+function render(){
+ grid.innerHTML="";adminList.innerHTML="";
+ const q=searchInput.value.toLowerCase();
+
+ products.forEach(p=>{
+  if(p.cat!=="mass")return;
+  if(!p.name.toLowerCase().includes(q))return;
+
+  grid.innerHTML+=`
+  <div class="card">
+   ${p.offer?`<div class="badge">${p.offer}% OFF</div>`:""}
+   <img src="${p.img}">
+   <div class="info">
+    <h4>${p.name}</h4>
+    <div class="price">
+     ${p.offer?`<del>₹${p.mrp}</del>`:""}
+     <span> ₹${p.price}</span>
+    </div>
+    <div class="stock ${p.stock?"in":"out"}">Stock: ${p.stock}</div>
+    <a class="order"
+     href="https://wa.me/918985786651?text=I want ${p.name}">
+     Order on WhatsApp</a>
+   </div>
+  </div>`;
+
+  adminList.innerHTML+=`
+  <div class="adminItem">
+   <b>${p.name}</b>
+   <input value="${p.mrp}" oninput="p.mrp=this.value">
+   <input value="${p.price}" oninput="p.price=this.value">
+   <input value="${p.offer}" oninput="p.offer=this.value">
+   <input value="${p.stock}" oninput="p.stock=this.value">
+  </div>`;
+ });
+}
+
+function saveData(){
+ localStorage.setItem("productsDB",JSON.stringify(products));
+ alert("Saved permanently ✅");
+ render();
+}
+
+render();
+searchInput.onkeyup=render;
+
+document.addEventListener("keydown",e=>{
+ if(e.ctrlKey&&e.shiftKey&&e.key==="A"){
+  if(prompt("Admin Password")==="admin123")
+   adminPanel.style.display="block";
+ }
+});
+</script>
+
+</body>
+</html>
